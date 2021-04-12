@@ -1,9 +1,9 @@
 module.exports = {
   pathPrefix: '/Gatsby-Starter-TypeScript-Redux-TDD-BDD',
   siteMetadata: {
-    title: `Gatsby-Starter-TypeScript-Redux-TDD-BDD`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@JimLynchCodes`,
+    title: `Agile Planning Poker`,
+    description: `Help to decide on story points for your User Stories.`,
+    author: `@GabrielQuiles`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -32,7 +32,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-react-redux`,
       options: {
-        pathToCreateStoreModule: './src/state/createStore',
+        pathToCreateStoreModule: './src/Shared/Infrastructure/datastore',
         serialize: {
           space: 0,
           isJSON: true,

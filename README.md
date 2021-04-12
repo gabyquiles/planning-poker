@@ -318,7 +318,7 @@ First, install the npm libraries for `gatsby-plugin-react-redux`, `react-redux`,
 npm install --save gatsby-plugin-react-redux react-redux redux
 ```
 
-Created a `./src/store/createStore.ts` file containing this:
+Created a `./src/store/index.ts` file containing this:
 
 ```
 import { createStore } from 'redux';

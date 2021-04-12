@@ -1,0 +1,25 @@
+#type Issue @model {
+#    id: ID!
+#    name: String
+#    votes: [Vote]
+#}
+
+type User @model {
+    cognitoId: ID!
+    id: ID!
+    email: String!
+}
+
+type Vote @model{
+    id: ID!
+    value: Int
+    author: String!
+    show: Boolean!
+}
+
+#type Session @model {
+#    id: ID!
+#    createdAt: AWSDateTime
+#    users: [User]
+#    issues: [Issue]
+#}

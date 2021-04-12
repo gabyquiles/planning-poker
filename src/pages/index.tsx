@@ -1,51 +1,49 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import { connect } from 'react-redux';
 import Layout from '../components/layout';
-import Image from '../components/image';
-import SEO from '../components/seo';
-import Todos from '../components/todos/todos';
-import LoginSection from '../components/login/login-section';
-import { IState } from '../state/createStore';
-import { ITodo } from '../models/todo';
+import { useUser } from '../Users/Components/UserContext';
+import { createStyles, Grid, makeStyles, Paper, Theme } from '@material-ui/core';
+import UserList from '../Users/Components/UserList';
+import CardOptions from '../Cards/Components/CardOptions';
+import VotesTally from '../Cards/Components/VotesTally';
+import SessionControls from '../Cards/Components/SessionControls';
 
-const imgStyle = { maxWidth: '300px', marginBottom: '1.45rem' };
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+    },
+  }),
+);
 
-const pStyle = {
-  fontSize: 'calc(5px + 3vw)',
-  lineHeight: 'calc(12px + 3vw)',
-  margin: '2px',
-};
-
-const IndexPage = ({ todos = [], userId = 0}: { todos: ITodo[] | undefined, userId: number | undefined }) => {
+const IndexPage = () => {
+  const { user, logout } = useUser();
+  const classes = useStyles();
 
   return (
     <Layout>
-      <SEO title='Home' />
-      <div style={imgStyle}>
-        <Image />
+      <div className={classes.root}>
+        <Grid container spacing={1}>
+          <Grid item xs={9}>
+            <Paper className={classes.paper}>
+              <VotesTally />
+              <SessionControls />
+            </Paper>
+          </Grid>
+          <Grid item xs={3}>
+            <Paper className={classes.paper}><UserList /></Paper>
+          </Grid>
+          <Grid item xs={12}>
+            <Paper className={classes.paper}><CardOptions /></Paper>
+          </Grid>
+        </Grid>
       </div>
-
-      <div style={pStyle}>
-        <p>Welcome to your new Gatsby site...</p>
-        <p>Now go build something great!</p>
-      </div>
-
-      <LoginSection userId={userId} />
-
-      <Todos todos={todos} />
-
-      <Link to='/page-2/'>Go to page 2</Link>
-
     </Layout>
   );
 };
 
-const mapStateToProps = (state: IState) => {
-  return {
-    todos: state.todosReducer.todos,
-    userId: state.loginReducer.userId,
-  };
-};
-
-export default connect(mapStateToProps)(IndexPage);
+export default IndexPage;
