@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: '/Gatsby-Starter-TypeScript-Redux-TDD-BDD',
+  pathPrefix: '/',
   siteMetadata: {
     title: `Agile Planning Poker`,
     description: `Help to decide on story points for your User Stories.`,

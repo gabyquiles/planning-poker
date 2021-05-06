@@ -93,30 +93,18 @@ export type DeleteUserInput = {
 
 export type CreateVoteInput = {
   id?: string | null,
-  value?: number | null,
+  value?: string | null,
   author: string,
   show: boolean,
 };
 
 export type ModelVoteConditionInput = {
-  value?: ModelIntInput | null,
+  value?: ModelStringInput | null,
   author?: ModelStringInput | null,
   show?: ModelBooleanInput | null,
   and?: Array< ModelVoteConditionInput | null > | null,
   or?: Array< ModelVoteConditionInput | null > | null,
   not?: ModelVoteConditionInput | null,
-};
-
-export type ModelIntInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  between?: Array< number | null > | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
 };
 
 export type ModelBooleanInput = {
@@ -129,7 +117,7 @@ export type ModelBooleanInput = {
 export type Vote = {
   __typename: "Vote",
   id?: string,
-  value?: number | null,
+  value?: string | null,
   author?: string,
   show?: boolean,
   createdAt?: string,
@@ -138,7 +126,7 @@ export type Vote = {
 
 export type UpdateVoteInput = {
   id: string,
-  value?: number | null,
+  value?: string | null,
   author?: string | null,
   show?: boolean | null,
 };
@@ -164,7 +152,7 @@ export type ModelUserConnection = {
 
 export type ModelVoteFilterInput = {
   id?: ModelIDInput | null,
-  value?: ModelIntInput | null,
+  value?: ModelStringInput | null,
   author?: ModelStringInput | null,
   show?: ModelBooleanInput | null,
   and?: Array< ModelVoteFilterInput | null > | null,
@@ -235,7 +223,7 @@ export type CreateVoteMutation = {
   createVote?:  {
     __typename: "Vote",
     id: string,
-    value?: number | null,
+    value?: string | null,
     author: string,
     show: boolean,
     createdAt: string,
@@ -252,7 +240,7 @@ export type UpdateVoteMutation = {
   updateVote?:  {
     __typename: "Vote",
     id: string,
-    value?: number | null,
+    value?: string | null,
     author: string,
     show: boolean,
     createdAt: string,
@@ -269,7 +257,7 @@ export type DeleteVoteMutation = {
   deleteVote?:  {
     __typename: "Vote",
     id: string,
-    value?: number | null,
+    value?: string | null,
     author: string,
     show: boolean,
     createdAt: string,
@@ -321,7 +309,7 @@ export type GetVoteQuery = {
   getVote?:  {
     __typename: "Vote",
     id: string,
-    value?: number | null,
+    value?: string | null,
     author: string,
     show: boolean,
     createdAt: string,
@@ -341,7 +329,7 @@ export type ListVotesQuery = {
     items?:  Array< {
       __typename: "Vote",
       id: string,
-      value?: number | null,
+      value?: string | null,
       author: string,
       show: boolean,
       createdAt: string,
@@ -388,7 +376,7 @@ export type OnCreateVoteSubscription = {
   onCreateVote?:  {
     __typename: "Vote",
     id: string,
-    value?: number | null,
+    value?: string | null,
     author: string,
     show: boolean,
     createdAt: string,
@@ -400,7 +388,7 @@ export type OnUpdateVoteSubscription = {
   onUpdateVote?:  {
     __typename: "Vote",
     id: string,
-    value?: number | null,
+    value?: string | null,
     author: string,
     show: boolean,
     createdAt: string,
@@ -412,7 +400,7 @@ export type OnDeleteVoteSubscription = {
   onDeleteVote?:  {
     __typename: "Vote",
     id: string,
-    value?: number | null,
+    value?: string | null,
     author: string,
     show: boolean,
     createdAt: string,

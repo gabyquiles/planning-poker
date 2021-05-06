@@ -4,7 +4,7 @@ import { useUser } from '../../Users/Components/UserContext';
 import { castVote } from '../Infrastructure/http/VotesApi';
 
 export default function CardOptions() {
-  const values = ['1', '2', '3', '5', '8', '13', '21', '?'];
+  const values = ['0', '1', '2', '3', '5', '8', '13', '21', '34', '55', '?'];
   const { user } = useUser();
 
   return (

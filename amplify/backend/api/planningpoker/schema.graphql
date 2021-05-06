@@ -12,7 +12,7 @@ type User @model {
 
 type Vote @model{
     id: ID!
-    value: Int
+    value: String
     author: String!
     show: Boolean!
 }
