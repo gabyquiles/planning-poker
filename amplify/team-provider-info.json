@@ -20,6 +20,9 @@
           "appId": "dpgbhamucwhtl",
           "type": "manual"
         }
+      },
+      "api": {
+        "planningpoker": {}
       }
     }
   }

@@ -1,6 +1,6 @@
-import { CastVote, ResetVotes, ShowVotes } from '../../Types/Actions';
+import { CastVote, CreateSession, ResetVotes, ShowVotes } from '../../Types/Actions';
 import { API, graphqlOperation } from 'aws-amplify';
-import { createVote, deleteVote, updateVote } from '../../../graphql/mutations';
+import { createVote, deleteVote, updateVote, createSession as createSessionGraphQL } from '../../../graphql/mutations';
 
 export const castVote: CastVote = (value, voter) => {
   API.graphql(graphqlOperation(createVote, {
@@ -28,3 +28,12 @@ export const resetVotes: ResetVotes = (votes) => {
     },
   })));
 };
+
+export const createSession: CreateSession = async (user) =>  {
+  const {data: {createSession: {id}}} = await API.graphql(graphqlOperation(createSessionGraphQL, {
+    input: {
+      owner: user
+    }
+  }))
+  return id;
+}

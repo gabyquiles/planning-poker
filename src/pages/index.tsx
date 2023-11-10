@@ -1,11 +1,7 @@
 import React from 'react';
 import Layout from '../components/layout';
-import { useUser } from '../Users/Components/UserContext';
-import { createStyles, Grid, makeStyles, Paper, Theme } from '@material-ui/core';
-import UserList from '../Users/Components/UserList';
-import CardOptions from '../Cards/Components/CardOptions';
-import VotesTally from '../Cards/Components/VotesTally';
-import SessionControls from '../Cards/Components/SessionControls';
+import { createStyles, makeStyles, Theme } from '@material-ui/core';
+import CreateSessionButton from '../Cards/Components/CreateSessionButton';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,11 +17,13 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const IndexPage = () => {
-  const { user, logout } = useUser();
   const classes = useStyles();
 
   return (
     <Layout>
+      <h1>Hello World</h1>
+      <CreateSessionButton />
+      {/* <AmplifyS3Album />
       <div className={classes.root}>
         <Grid container spacing={1}>
           <Grid item xs={9}>
@@ -41,7 +39,7 @@ const IndexPage = () => {
             <Paper className={classes.paper}><CardOptions /></Paper>
           </Grid>
         </Grid>
-      </div>
+      </div> */}
     </Layout>
   );
 };

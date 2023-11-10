@@ -17,9 +17,9 @@ type Vote @model{
     show: Boolean!
 }
 
-#type Session @model {
-#    id: ID!
-#    createdAt: AWSDateTime
+type Session @model {
+    id: ID!
 #    users: [User]
 #    issues: [Issue]
-#}
+    owner: String
+}

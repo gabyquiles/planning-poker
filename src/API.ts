@@ -74,11 +74,11 @@ export type ModelStringInput = {
 
 export type User = {
   __typename: "User",
-  cognitoId?: string,
-  id?: string,
-  email?: string,
-  createdAt?: string,
-  updatedAt?: string,
+  cognitoId: string,
+  id: string,
+  email: string,
+  createdAt: string,
+  updatedAt: string,
 };
 
 export type UpdateUserInput = {
@@ -88,7 +88,7 @@ export type UpdateUserInput = {
 };
 
 export type DeleteUserInput = {
-  id?: string | null,
+  id: string,
 };
 
 export type CreateVoteInput = {
@@ -116,12 +116,12 @@ export type ModelBooleanInput = {
 
 export type Vote = {
   __typename: "Vote",
-  id?: string,
+  id: string,
   value?: string | null,
-  author?: string,
-  show?: boolean,
-  createdAt?: string,
-  updatedAt?: string,
+  author: string,
+  show: boolean,
+  createdAt: string,
+  updatedAt: string,
 };
 
 export type UpdateVoteInput = {
@@ -132,7 +132,36 @@ export type UpdateVoteInput = {
 };
 
 export type DeleteVoteInput = {
+  id: string,
+};
+
+export type CreateSessionInput = {
   id?: string | null,
+  owner?: string | null,
+};
+
+export type ModelSessionConditionInput = {
+  owner?: ModelStringInput | null,
+  and?: Array< ModelSessionConditionInput | null > | null,
+  or?: Array< ModelSessionConditionInput | null > | null,
+  not?: ModelSessionConditionInput | null,
+};
+
+export type Session = {
+  __typename: "Session",
+  id: string,
+  owner?: string | null,
+  createdAt: string,
+  updatedAt: string,
+};
+
+export type UpdateSessionInput = {
+  id: string,
+  owner?: string | null,
+};
+
+export type DeleteSessionInput = {
+  id: string,
 };
 
 export type ModelUserFilterInput = {
@@ -146,7 +175,7 @@ export type ModelUserFilterInput = {
 
 export type ModelUserConnection = {
   __typename: "ModelUserConnection",
-  items?:  Array<User | null > | null,
+  items:  Array<User | null >,
   nextToken?: string | null,
 };
 
@@ -162,12 +191,26 @@ export type ModelVoteFilterInput = {
 
 export type ModelVoteConnection = {
   __typename: "ModelVoteConnection",
-  items?:  Array<Vote | null > | null,
+  items:  Array<Vote | null >,
+  nextToken?: string | null,
+};
+
+export type ModelSessionFilterInput = {
+  id?: ModelIDInput | null,
+  owner?: ModelStringInput | null,
+  and?: Array< ModelSessionFilterInput | null > | null,
+  or?: Array< ModelSessionFilterInput | null > | null,
+  not?: ModelSessionFilterInput | null,
+};
+
+export type ModelSessionConnection = {
+  __typename: "ModelSessionConnection",
+  items:  Array<Session | null >,
   nextToken?: string | null,
 };
 
 export type CreateUserMutationVariables = {
-  input?: CreateUserInput,
+  input: CreateUserInput,
   condition?: ModelUserConditionInput | null,
 };
 
@@ -183,7 +226,7 @@ export type CreateUserMutation = {
 };
 
 export type UpdateUserMutationVariables = {
-  input?: UpdateUserInput,
+  input: UpdateUserInput,
   condition?: ModelUserConditionInput | null,
 };
 
@@ -199,7 +242,7 @@ export type UpdateUserMutation = {
 };
 
 export type DeleteUserMutationVariables = {
-  input?: DeleteUserInput,
+  input: DeleteUserInput,
   condition?: ModelUserConditionInput | null,
 };
 
@@ -215,7 +258,7 @@ export type DeleteUserMutation = {
 };
 
 export type CreateVoteMutationVariables = {
-  input?: CreateVoteInput,
+  input: CreateVoteInput,
   condition?: ModelVoteConditionInput | null,
 };
 
@@ -232,7 +275,7 @@ export type CreateVoteMutation = {
 };
 
 export type UpdateVoteMutationVariables = {
-  input?: UpdateVoteInput,
+  input: UpdateVoteInput,
   condition?: ModelVoteConditionInput | null,
 };
 
@@ -249,7 +292,7 @@ export type UpdateVoteMutation = {
 };
 
 export type DeleteVoteMutationVariables = {
-  input?: DeleteVoteInput,
+  input: DeleteVoteInput,
   condition?: ModelVoteConditionInput | null,
 };
 
@@ -265,8 +308,53 @@ export type DeleteVoteMutation = {
   } | null,
 };
 
+export type CreateSessionMutationVariables = {
+  input: CreateSessionInput,
+  condition?: ModelSessionConditionInput | null,
+};
+
+export type CreateSessionMutation = {
+  createSession?:  {
+    __typename: "Session",
+    id: string,
+    owner?: string | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type UpdateSessionMutationVariables = {
+  input: UpdateSessionInput,
+  condition?: ModelSessionConditionInput | null,
+};
+
+export type UpdateSessionMutation = {
+  updateSession?:  {
+    __typename: "Session",
+    id: string,
+    owner?: string | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type DeleteSessionMutationVariables = {
+  input: DeleteSessionInput,
+  condition?: ModelSessionConditionInput | null,
+};
+
+export type DeleteSessionMutation = {
+  deleteSession?:  {
+    __typename: "Session",
+    id: string,
+    owner?: string | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
 export type GetUserQueryVariables = {
-  id?: string,
+  id: string,
 };
 
 export type GetUserQuery = {
@@ -289,20 +377,20 @@ export type ListUsersQueryVariables = {
 export type ListUsersQuery = {
   listUsers?:  {
     __typename: "ModelUserConnection",
-    items?:  Array< {
+    items:  Array< {
       __typename: "User",
       cognitoId: string,
       id: string,
       email: string,
       createdAt: string,
       updatedAt: string,
-    } | null > | null,
+    } | null >,
     nextToken?: string | null,
   } | null,
 };
 
 export type GetVoteQueryVariables = {
-  id?: string,
+  id: string,
 };
 
 export type GetVoteQuery = {
@@ -326,7 +414,7 @@ export type ListVotesQueryVariables = {
 export type ListVotesQuery = {
   listVotes?:  {
     __typename: "ModelVoteConnection",
-    items?:  Array< {
+    items:  Array< {
       __typename: "Vote",
       id: string,
       value?: string | null,
@@ -334,9 +422,46 @@ export type ListVotesQuery = {
       show: boolean,
       createdAt: string,
       updatedAt: string,
-    } | null > | null,
+    } | null >,
     nextToken?: string | null,
   } | null,
+};
+
+export type GetSessionQueryVariables = {
+  id: string,
+};
+
+export type GetSessionQuery = {
+  getSession?:  {
+    __typename: "Session",
+    id: string,
+    owner?: string | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type ListSessionsQueryVariables = {
+  filter?: ModelSessionFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListSessionsQuery = {
+  listSessions?:  {
+    __typename: "ModelSessionConnection",
+    items:  Array< {
+      __typename: "Session",
+      id: string,
+      owner?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type OnCreateUserSubscriptionVariables = {
 };
 
 export type OnCreateUserSubscription = {
@@ -350,6 +475,9 @@ export type OnCreateUserSubscription = {
   } | null,
 };
 
+export type OnUpdateUserSubscriptionVariables = {
+};
+
 export type OnUpdateUserSubscription = {
   onUpdateUser?:  {
     __typename: "User",
@@ -361,6 +489,9 @@ export type OnUpdateUserSubscription = {
   } | null,
 };
 
+export type OnDeleteUserSubscriptionVariables = {
+};
+
 export type OnDeleteUserSubscription = {
   onDeleteUser?:  {
     __typename: "User",
@@ -370,6 +501,9 @@ export type OnDeleteUserSubscription = {
     createdAt: string,
     updatedAt: string,
   } | null,
+};
+
+export type OnCreateVoteSubscriptionVariables = {
 };
 
 export type OnCreateVoteSubscription = {
@@ -384,6 +518,9 @@ export type OnCreateVoteSubscription = {
   } | null,
 };
 
+export type OnUpdateVoteSubscriptionVariables = {
+};
+
 export type OnUpdateVoteSubscription = {
   onUpdateVote?:  {
     __typename: "Vote",
@@ -396,6 +533,9 @@ export type OnUpdateVoteSubscription = {
   } | null,
 };
 
+export type OnDeleteVoteSubscriptionVariables = {
+};
+
 export type OnDeleteVoteSubscription = {
   onDeleteVote?:  {
     __typename: "Vote",
@@ -403,6 +543,45 @@ export type OnDeleteVoteSubscription = {
     value?: string | null,
     author: string,
     show: boolean,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnCreateSessionSubscriptionVariables = {
+};
+
+export type OnCreateSessionSubscription = {
+  onCreateSession?:  {
+    __typename: "Session",
+    id: string,
+    owner?: string | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnUpdateSessionSubscriptionVariables = {
+};
+
+export type OnUpdateSessionSubscription = {
+  onUpdateSession?:  {
+    __typename: "Session",
+    id: string,
+    owner?: string | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnDeleteSessionSubscriptionVariables = {
+};
+
+export type OnDeleteSessionSubscription = {
+  onDeleteSession?:  {
+    __typename: "Session",
+    id: string,
+    owner?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,
