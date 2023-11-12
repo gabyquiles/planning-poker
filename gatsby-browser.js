@@ -6,7 +6,7 @@
 
 // You can delete this file if you're not using it
 import * as React from 'react'
-import Amplify from 'aws-amplify'
+import {Amplify} from 'aws-amplify'
 import awsconfig from './src/aws-exports'
 // import { UserProvider } from './src/Users/Components/UserContext'
 // import { AmplifyAuthenticator } from '@aws-amplify/ui-react'
