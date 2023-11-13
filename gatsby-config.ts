@@ -1,4 +1,6 @@
-module.exports = {
+import { GatsbyConfig } from "gatsby";
+
+export const config: GatsbyConfig = {
   pathPrefix: '/',
   siteMetadata: {
     title: `Agile Planning Poker`,

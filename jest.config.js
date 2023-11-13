@@ -1,21 +1,39 @@
+// const { compilerOptions } = require("./tsconfig.json")
+const { pathsToModuleNameMapper } = require("ts-jest")
+const paths = pathsToModuleNameMapper({
+  "@src/*": ["./src/*"],
+  "@Users/*": ["./src/Users/*"],
+  "@Cards/*": ["./src/PlanningSession/*"],
+}, {
+  prefix: "<rootDir>/",
+})
+
 module.exports = {
-  transform: {
-    '^.+\\.[jt]sx?$': '<rootDir>/jest-preprocess.js',
-  },
-  moduleNameMapper: {
-    '.+\\.(css|styl|less|sass|scss)$': `identity-obj-proxy`,
-    '.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': `<rootDir>/__mocks__/file-mock.js`,
-  },
-  testPathIgnorePatterns: [`node_modules`, `.cache`, `public`],
-  transformIgnorePatterns: [`node_modules/(?!(gatsby)/)`],
-  globals: {
-    __PATH_PREFIX__: ``,
-  },
-  testURL: `http://localhost`,
-  setupFiles: [`<rootDir>/loadershim.js`],
-  collectCoverageFrom: ['**/*.{ts,tsx}', '!**/node_modules/**'],
-  collectCoverage: true,
-  coverageDirectory: 'coverage',
-  preset: 'ts-jest',
-  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
-}
+    transform: {
+        "^.+\\.[jt]sx?$": "<rootDir>/jest-preprocess.js",
+    },
+    moduleNameMapper: {
+      ".+\\.(css|styl|less|sass|scss)$": `identity-obj-proxy`,
+      ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": `<rootDir>/__mocks__/file-mock.js`,
+      "uuid": require.resolve('uuid'),
+      ...paths,
+    },
+    testPathIgnorePatterns: [`node_modules`, `\\.cache`, `<rootDir>.*/public`],
+    transformIgnorePatterns: [`node_modules/(?!(gatsby|gatsby-script|gatsby-link)/)`],
+    globals: {
+      __PATH_PREFIX__: ``,
+    },
+    testEnvironment: 'jsdom',
+    testEnvironmentOptions: {
+      url: `http://localhost`,
+    },
+    setupFiles: [`<rootDir>/loadershim.js`],
+    setupFilesAfterEnv: [`<rootDir>/setupTests.ts`],
+    collectCoverage: true,
+    collectCoverageFrom: ["./src/**"],
+    coverageThreshold: {
+      global: {
+        lines: 80
+      }
+    }
+  }

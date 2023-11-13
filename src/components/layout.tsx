@@ -6,13 +6,12 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { graphql, useStaticQuery } from 'gatsby';
 import Header from './header';
 import './layout.css';
-import { Box, Container } from '@material-ui/core';
+import { Box, Container } from '@mui/material';
 
-const Layout = ({ children }: { children: any }) => {
+const Layout = ({ children }: { children: React.Element }) => {
 
   const data = useStaticQuery(graphql`
       query SiteTitleQuery {
@@ -28,7 +27,7 @@ const Layout = ({ children }: { children: any }) => {
     <Box>
       <Header siteTitle={data.site.siteMetadata.title} />
       <main>
-        <Container fluid>
+        <Container>
           {children}
         </Container>
       </main>
@@ -44,10 +43,6 @@ const Layout = ({ children }: { children: any }) => {
       </footer>
     </Box>
   );
-};
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default Layout;

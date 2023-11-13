@@ -10,7 +10,9 @@ import {Amplify} from 'aws-amplify'
 import awsconfig from './src/aws-exports'
 // import { UserProvider } from './src/Users/Components/UserContext'
 // import { AmplifyAuthenticator } from '@aws-amplify/ui-react'
-import { ThemeProvider, createMuiTheme } from '@material-ui/core'
+import { createTheme } from '@mui/material'
+import { ThemeProvider } from '@mui/material/styles';
+import { StyledEngineProvider } from '@mui/material'
 
 export const onClientEntry = () => {
   // Analytics.addPluggable(new AWSKinesisFirehoseProvider())
@@ -35,12 +37,15 @@ export const onClientEntry = () => {
   // })
   Amplify.configure(awsconfig)
 }
-const theme = createMuiTheme();
+const theme = createTheme();
 
 export const wrapRootElement = ({ element }) => (
+  <StyledEngineProvider injectFirst>
   <ThemeProvider theme={theme}>
+  
     {element}
   </ThemeProvider>
+  </StyledEngineProvider>
   // <AmplifyAuthenticator>
   //   <UserProvider>{element}</UserProvider>
   // </AmplifyAuthenticator>

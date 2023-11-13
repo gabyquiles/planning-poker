@@ -1,17 +1,16 @@
 import * as React from 'react';
-import { Card, createStyles, makeStyles, Theme, Typography } from '@material-ui/core';
+import { Paper } from '@mui/material';
+import { styled } from '@mui/styles';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    card: {
-      display: 'inline-block',
-      width: '6.6em',
-      height: '9.2em',
-      margin: '1em',
-    },
-    cardValue: {},
-  }),
-);
+const Item = styled(Paper)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '6.6rem',
+  height: '9.2rem',
+  margin: '1em',
+  fontSize: '2rem'
+}));
 
 interface ICardProps {
   value?: string;
@@ -19,14 +18,9 @@ interface ICardProps {
 }
 
 export default function StoryPointCard({ value, onClick }: ICardProps) {
-  const classes = useStyles();
   return (
-    <>
-      <Card className={classes.card} onClick={onClick}>
-        <Typography className={classes.cardValue}>
+      <Item onClick={onClick}>
           {value}
-        </Typography>
-      </Card>
-    </>
+      </Item>
   );
 }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-import { Button, createStyles, List, ListItem, ListItemText, makeStyles, Theme, Typography } from '@material-ui/core';
+import { Button, List, ListItem, ListItemText, Theme, Typography } from '@mui/material';
+import { makeStyles, createStyles } from '@mui/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers, subscribeForUsers } from '../Infrastructure/datastore/usersReducer';
 import { useUser } from './UserContext';

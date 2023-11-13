@@ -1,18 +1,8 @@
 import * as React from 'react'
-import { Button, Theme, createStyles, makeStyles } from '@material-ui/core'
+import { Button } from '@mui/material'
 import { createSession } from '../Infrastructure/http/VotesApi'
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    button: {
-      margin: theme.spacing(1),
-    },
-  }),
-);
-
 export default function CreateSessionButton() {
-    const classes = useStyles();
-
     const newSession = async () => {
         const sessionId = await createSession('hello')
         console.log(sessionId)
@@ -20,7 +10,6 @@ export default function CreateSessionButton() {
 
     return (
     <Button 
-    className={classes.button}
     variant={'contained'}
     color={'primary'}
     onClick={newSession}

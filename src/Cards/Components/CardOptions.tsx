@@ -2,18 +2,24 @@ import * as React from 'react';
 import StoryPointCard from './StoryPointCard';
 import { useUser } from '../../Users/Components/UserContext';
 import { castVote } from '../Infrastructure/http/VotesApi';
+import { Stack as MUStack } from '@mui/material';
+import { styled } from '@mui/styles';
+
+const Stack = styled(MUStack)(({theme}) => ({
+  justifyContent: 'space-around'
+}))
 
 export default function CardOptions() {
   const values = ['0', '1', '2', '3', '5', '8', '13', '21', '34', '55', '?'];
-  const { user } = useUser();
+  // const { user } = useUser();
 
   return (
-    <>
-      {user && values.map(cardValue => (<StoryPointCard
+    <Stack direction={'row'}  useFlexGap flexWrap="wrap">
+      {values.map(cardValue => (<StoryPointCard
         key={cardValue}
         value={cardValue}
         onClick={() => castVote(cardValue, user.email)} />),
       )}
-    </>
+    </Stack>
   );
 }

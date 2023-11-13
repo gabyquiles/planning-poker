@@ -1,11 +1,11 @@
 import React from 'react';
 import Layout from '../../components/layout';
-import { createStyles, Grid, makeStyles, Paper, Theme } from '@material-ui/core';
+import { Grid, Paper, Theme } from '@mui/material';
+import { makeStyles, createStyles } from '@mui/styles';
 import UserList from '../../Users/Components/UserList';
 import CardOptions from '../../Cards/Components/CardOptions';
 import VotesTally from '../../Cards/Components/VotesTally';
 import SessionControls from '../../Cards/Components/SessionControls';
-import { AmplifyS3Album } from '@aws-amplify/ui-react';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,7 +25,6 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <AmplifyS3Album />
       <div className={classes.root}>
         <Grid container spacing={1}>
           <Grid item xs={9}>
