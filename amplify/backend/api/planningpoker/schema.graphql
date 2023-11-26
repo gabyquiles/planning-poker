@@ -4,20 +4,26 @@
 #    votes: [Vote]
 #}
 
-type User @model {
+type User @model @auth(rules: [
+    { allow: public},
+]) {
     cognitoId: ID!
     id: ID!
     email: String!
 }
 
-type Vote @model{
+type Vote @model @auth(rules: [
+    { allow: public},
+]){
     id: ID!
     value: String
     author: String!
     show: Boolean!
 }
 
-type Session @model {
+type Session @model @auth(rules: [
+    { allow: public},
+]){
     id: ID!
 #    users: [User]
 #    issues: [Issue]

@@ -49,3 +49,5 @@ export const config: GatsbyConfig = {
     // `gatsby-plugin-offline`,
   ],
 }
+
+export default config;
