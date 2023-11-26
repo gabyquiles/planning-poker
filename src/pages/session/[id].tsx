@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import Layout from '../../components/layout';
 import { Grid, Paper, type Theme } from '@mui/material';
 import { makeStyles, createStyles } from '@mui/styles';
-import { useGetSessionQuery } from '../../Session/Infrastructure/http/SessionApi';
+import { useGetSessionQuery } from '@Session/Infrastructure/http/SessionApi';
 import { useIdentity } from '@src/contexts/User/IdentityContext';
 import CardOptions from '@src/Cards/Components/CardOptions';
-import SessionControls from '@src/Cards/Components/SessionControls';
+import UserList from '@Users/Components/UserList';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -41,11 +41,11 @@ const SessionPage = ({ params: {id: sessionId} }: {params: {id: string}}) => {
             <Paper className={classes.paper}>
               {user}
               {/* <VotesTally /> */}
-              <SessionControls />
+              {/* <SessionControls /> */}
             </Paper>
           </Grid>
           <Grid item xs={3}>
-            {/* <Paper className={classes.paper}><UserList /></Paper> */}
+            <Paper className={classes.paper}><UserList /></Paper>
           </Grid>
           <Grid item xs={12}>
             <Paper className={classes.paper}><CardOptions /></Paper>

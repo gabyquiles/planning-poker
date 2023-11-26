@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-import { Button, List, ListItem, ListItemText, Theme, Typography } from '@mui/material';
+import { Button, List, ListItem, ListItemText, type Theme, Typography } from '@mui/material';
 import { makeStyles, createStyles } from '@mui/styles';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUsers, subscribeForUsers } from '../Infrastructure/datastore/usersReducer';
-import { useUser } from './UserContext';
+import { useGetUsersQuery } from '@src/Users/Infrastructure/http/UserApi';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,13 +21,13 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function UserList() {
   const classes = useStyles();
-  const { logout } = useUser();
-  const dispatch = useDispatch();
-  const users = useSelector(state => state.users.data);
-  useEffect(() => {
-    dispatch(getUsers());
-    subscribeForUsers(dispatch);
-  }, []);
+  const {data: users, isLoading} = useGetUsersQuery();
+  // const { logout } = useUser();
+
+  if(isLoading) {
+    return <h1>Loading</h1>
+  }
+
   return (
     <>
       <Typography variant='h6' className={classes.title}>
@@ -42,7 +40,7 @@ export default function UserList() {
           </ListItem>
         ))}
       </List>
-      <Button onClick={logout} variant={'contained'} color={'secondary'}>Sign Out</Button>
+      {/* <Button onClick={logout} variant={'contained'} color={'secondary'}>Sign Out</Button> */}
     </>
   );
 }

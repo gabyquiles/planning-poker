@@ -18,7 +18,7 @@ export const onClientEntry = () => {
 }
 const theme = createTheme();
 
-export const wrapRootElement = ({ element }) => (
+export const wrapPageElement = ({ element }) => (
   <StyledEngineProvider injectFirst>
   <ThemeProvider theme={theme}>
   <IdentityProvider>

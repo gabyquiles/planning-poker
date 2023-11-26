@@ -73,6 +73,14 @@ export const listVotes = /* GraphQL */ `query ListVotes(
 export const getSession = /* GraphQL */ `query GetSession($id: ID!) {
   getSession(id: $id) {
     id
+    users {
+      cognitoId
+      id
+      email
+      createdAt
+      updatedAt
+      __typename
+    }
     owner
     createdAt
     updatedAt

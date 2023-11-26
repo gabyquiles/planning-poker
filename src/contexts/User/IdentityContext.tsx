@@ -4,6 +4,7 @@ import { styled, Box, Button, TextField, Stack } from '@mui/material'
 import { Modal as BaseModal} from '@mui/base/Modal';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import clsx from 'clsx'
+import { useCreateUserMutation } from '@Users/Infrastructure/http/UserApi';
 
 type IdentifyInputs = {
     email: string
@@ -19,8 +20,12 @@ export function IdentityProvider({children}: PropsWithChildren) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const [createUser] = useCreateUserMutation();
+
     useEffect(() => {
-        savedResolve && user !== 'Unknown' && savedResolve(user);
+        if(savedResolve && user !== 'Unknown') {
+          savedResolve(user);
+        }
     }, [savedResolve, user])
 
     const {
@@ -39,6 +44,7 @@ export function IdentityProvider({children}: PropsWithChildren) {
     }))
     const onSubmit: SubmitHandler<IdentifyInputs> =async ({email}) => {
         setUser(email)
+        createUser({email})
         handleClose();
     }
 

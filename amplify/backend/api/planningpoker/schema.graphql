@@ -7,7 +7,7 @@
 type User @model @auth(rules: [
     { allow: public},
 ]) {
-    cognitoId: ID!
+    cognitoId: ID
     id: ID!
     email: String!
 }
@@ -25,7 +25,7 @@ type Session @model @auth(rules: [
     { allow: public},
 ]){
     id: ID!
-#    users: [User]
+    users: [User]
 #    issues: [Issue]
     owner: String
 }

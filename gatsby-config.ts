@@ -44,6 +44,16 @@ export const config: GatsbyConfig = {
         windowKey: '__PRELOADED_STATE__',
       },
     },
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@src": "./src",
+          "@Session": "./src/Session",
+          "@Users": "./src/Users",
+        },
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

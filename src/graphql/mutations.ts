@@ -119,6 +119,14 @@ export const createSession = /* GraphQL */ `mutation CreateSession(
 ) {
   createSession(input: $input, condition: $condition) {
     id
+    users {
+      cognitoId
+      id
+      email
+      createdAt
+      updatedAt
+      __typename
+    }
     owner
     createdAt
     updatedAt
@@ -135,6 +143,14 @@ export const updateSession = /* GraphQL */ `mutation UpdateSession(
 ) {
   updateSession(input: $input, condition: $condition) {
     id
+    users {
+      cognitoId
+      id
+      email
+      createdAt
+      updatedAt
+      __typename
+    }
     owner
     createdAt
     updatedAt
@@ -151,6 +167,14 @@ export const deleteSession = /* GraphQL */ `mutation DeleteSession(
 ) {
   deleteSession(input: $input, condition: $condition) {
     id
+    users {
+      cognitoId
+      id
+      email
+      createdAt
+      updatedAt
+      __typename
+    }
     owner
     createdAt
     updatedAt

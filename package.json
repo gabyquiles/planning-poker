@@ -46,6 +46,7 @@
     "gatsby": "^5.12.9",
     "gatsby-core-utils": "^4.12.1",
     "gatsby-link": "^5.12.1",
+    "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-image": "^3.12.3",
     "gatsby-plugin-manifest": "^5.12.3",
     "gatsby-plugin-offline": "^6.12.3",

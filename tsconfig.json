@@ -42,7 +42,7 @@
     "baseUrl": "src",
     "paths": {
         "@Users/*": ["./Users/*"],
-        "@PlanningSession/*": ["./PlanningSession/*"],
+        "@Session/*": ["./Session/*"],
         "@src/*": ["./*"]
     },
 
@@ -55,7 +55,7 @@
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
   },
-  "include": ["./src/**/*", "./gatsby-node.ts", "./gatsby-config.ts", "./plugins/**/*"],
+  "include": ["./**/*", "./gatsby-node.ts", "gatsby-config.ts", "./plugins/**/*"],
   // Old "moduleResolution": "Node" option required for Cypress
   // https://github.com/cypress-io/cypress/issues/26308#issuecomment-1663592648
   //

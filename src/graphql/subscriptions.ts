@@ -98,6 +98,14 @@ export const onDeleteVote = /* GraphQL */ `subscription OnDeleteVote {
 export const onCreateSession = /* GraphQL */ `subscription OnCreateSession {
   onCreateSession {
     id
+    users {
+      cognitoId
+      id
+      email
+      createdAt
+      updatedAt
+      __typename
+    }
     owner
     createdAt
     updatedAt
@@ -111,6 +119,14 @@ export const onCreateSession = /* GraphQL */ `subscription OnCreateSession {
 export const onUpdateSession = /* GraphQL */ `subscription OnUpdateSession {
   onUpdateSession {
     id
+    users {
+      cognitoId
+      id
+      email
+      createdAt
+      updatedAt
+      __typename
+    }
     owner
     createdAt
     updatedAt
@@ -124,6 +140,14 @@ export const onUpdateSession = /* GraphQL */ `subscription OnUpdateSession {
 export const onDeleteSession = /* GraphQL */ `subscription OnDeleteSession {
   onDeleteSession {
     id
+    users {
+      cognitoId
+      id
+      email
+      createdAt
+      updatedAt
+      __typename
+    }
     owner
     createdAt
     updatedAt

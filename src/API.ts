@@ -3,7 +3,7 @@
 //  This file was automatically generated and should not be edited.
 
 export type CreateUserInput = {
-  cognitoId: string,
+  cognitoId?: string | null,
   id?: string | null,
   email: string,
 };
@@ -74,7 +74,7 @@ export type ModelStringInput = {
 
 export type User = {
   __typename: "User",
-  cognitoId: string,
+  cognitoId?: string | null,
   id: string,
   email: string,
   createdAt: string,
@@ -150,6 +150,7 @@ export type ModelSessionConditionInput = {
 export type Session = {
   __typename: "Session",
   id: string,
+  users?:  Array<User | null > | null,
   owner?: string | null,
   createdAt: string,
   updatedAt: string,
@@ -217,7 +218,7 @@ export type CreateUserMutationVariables = {
 export type CreateUserMutation = {
   createUser?:  {
     __typename: "User",
-    cognitoId: string,
+    cognitoId?: string | null,
     id: string,
     email: string,
     createdAt: string,
@@ -233,7 +234,7 @@ export type UpdateUserMutationVariables = {
 export type UpdateUserMutation = {
   updateUser?:  {
     __typename: "User",
-    cognitoId: string,
+    cognitoId?: string | null,
     id: string,
     email: string,
     createdAt: string,
@@ -249,7 +250,7 @@ export type DeleteUserMutationVariables = {
 export type DeleteUserMutation = {
   deleteUser?:  {
     __typename: "User",
-    cognitoId: string,
+    cognitoId?: string | null,
     id: string,
     email: string,
     createdAt: string,
@@ -317,6 +318,14 @@ export type CreateSessionMutation = {
   createSession?:  {
     __typename: "Session",
     id: string,
+    users?:  Array< {
+      __typename: "User",
+      cognitoId?: string | null,
+      id: string,
+      email: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null > | null,
     owner?: string | null,
     createdAt: string,
     updatedAt: string,
@@ -332,6 +341,14 @@ export type UpdateSessionMutation = {
   updateSession?:  {
     __typename: "Session",
     id: string,
+    users?:  Array< {
+      __typename: "User",
+      cognitoId?: string | null,
+      id: string,
+      email: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null > | null,
     owner?: string | null,
     createdAt: string,
     updatedAt: string,
@@ -347,6 +364,14 @@ export type DeleteSessionMutation = {
   deleteSession?:  {
     __typename: "Session",
     id: string,
+    users?:  Array< {
+      __typename: "User",
+      cognitoId?: string | null,
+      id: string,
+      email: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null > | null,
     owner?: string | null,
     createdAt: string,
     updatedAt: string,
@@ -360,7 +385,7 @@ export type GetUserQueryVariables = {
 export type GetUserQuery = {
   getUser?:  {
     __typename: "User",
-    cognitoId: string,
+    cognitoId?: string | null,
     id: string,
     email: string,
     createdAt: string,
@@ -379,7 +404,7 @@ export type ListUsersQuery = {
     __typename: "ModelUserConnection",
     items:  Array< {
       __typename: "User",
-      cognitoId: string,
+      cognitoId?: string | null,
       id: string,
       email: string,
       createdAt: string,
@@ -435,6 +460,14 @@ export type GetSessionQuery = {
   getSession?:  {
     __typename: "Session",
     id: string,
+    users?:  Array< {
+      __typename: "User",
+      cognitoId?: string | null,
+      id: string,
+      email: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null > | null,
     owner?: string | null,
     createdAt: string,
     updatedAt: string,
@@ -467,7 +500,7 @@ export type OnCreateUserSubscriptionVariables = {
 export type OnCreateUserSubscription = {
   onCreateUser?:  {
     __typename: "User",
-    cognitoId: string,
+    cognitoId?: string | null,
     id: string,
     email: string,
     createdAt: string,
@@ -481,7 +514,7 @@ export type OnUpdateUserSubscriptionVariables = {
 export type OnUpdateUserSubscription = {
   onUpdateUser?:  {
     __typename: "User",
-    cognitoId: string,
+    cognitoId?: string | null,
     id: string,
     email: string,
     createdAt: string,
@@ -495,7 +528,7 @@ export type OnDeleteUserSubscriptionVariables = {
 export type OnDeleteUserSubscription = {
   onDeleteUser?:  {
     __typename: "User",
-    cognitoId: string,
+    cognitoId?: string | null,
     id: string,
     email: string,
     createdAt: string,
@@ -555,6 +588,14 @@ export type OnCreateSessionSubscription = {
   onCreateSession?:  {
     __typename: "Session",
     id: string,
+    users?:  Array< {
+      __typename: "User",
+      cognitoId?: string | null,
+      id: string,
+      email: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null > | null,
     owner?: string | null,
     createdAt: string,
     updatedAt: string,
@@ -568,6 +609,14 @@ export type OnUpdateSessionSubscription = {
   onUpdateSession?:  {
     __typename: "Session",
     id: string,
+    users?:  Array< {
+      __typename: "User",
+      cognitoId?: string | null,
+      id: string,
+      email: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null > | null,
     owner?: string | null,
     createdAt: string,
     updatedAt: string,
@@ -581,6 +630,14 @@ export type OnDeleteSessionSubscription = {
   onDeleteSession?:  {
     __typename: "Session",
     id: string,
+    users?:  Array< {
+      __typename: "User",
+      cognitoId?: string | null,
+      id: string,
+      email: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null > | null,
     owner?: string | null,
     createdAt: string,
     updatedAt: string,
