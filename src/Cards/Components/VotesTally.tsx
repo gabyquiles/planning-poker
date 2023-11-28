@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { subscribeToVotes } from '../Infrastructure/datastore/votes';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import TalliedVote from './TalliedVote';
 
 const useStyles = makeStyles({
   table: {
@@ -12,12 +13,13 @@ const useStyles = makeStyles({
 });
 
 export default function VotesTally() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    subscribeToVotes(dispatch);
-  }, []);
+  // TODO: Subscribe to votes
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   subscribeToVotes(dispatch);
+  // }, []);
 
-  const votes = useSelector(state => state.votes.data);
+  const votes = [] //useSelector(state => state.votes.data);
   const classes = useStyles();
   return (<>
     <Table className={classes.table} aria-label='simple table'>
@@ -38,6 +40,6 @@ export default function VotesTally() {
         ))}
       </TableBody>
     </Table>
-    {/*{votes.map(vote => <TalliedVote key={vote.id} vote={vote} />)}*/}
+    {votes.map(vote => <TalliedVote key={vote.id} vote={vote} />)}
   </>);
 }

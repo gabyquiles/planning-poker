@@ -35,12 +35,12 @@ export default function UserList() {
       </Typography>
       <List>
         {users.map(user => (
-          <ListItem button key={user.id}>
+          <ListItem key={user.id}>
             <ListItemText primary={user.email} />
           </ListItem>
         ))}
       </List>
-      {/* <Button onClick={logout} variant={'contained'} color={'secondary'}>Sign Out</Button> */}
+      {/* <Button onClick={logout} variant={'contained'} color={'secondary'}>Leave</Button> */}
     </>
   );
 }

@@ -6,6 +6,7 @@ import { useGetSessionQuery } from '@Session/Infrastructure/http/SessionApi';
 import { useIdentity } from '@src/contexts/User/IdentityContext';
 import CardOptions from '@src/Cards/Components/CardOptions';
 import UserList from '@Users/Components/UserList';
+import VotesTally from '@src/Cards/Components/VotesTally';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -39,8 +40,7 @@ const SessionPage = ({ params: {id: sessionId} }: {params: {id: string}}) => {
         <Grid container spacing={1}>
           <Grid item xs={9}>
             <Paper className={classes.paper}>
-              {user}
-              {/* <VotesTally /> */}
+              <VotesTally />
               {/* <SessionControls /> */}
             </Paper>
           </Grid>
@@ -48,7 +48,7 @@ const SessionPage = ({ params: {id: sessionId} }: {params: {id: string}}) => {
             <Paper className={classes.paper}><UserList /></Paper>
           </Grid>
           <Grid item xs={12}>
-            <Paper className={classes.paper}><CardOptions /></Paper>
+            <Paper className={classes.paper}><CardOptions sessionId={sessionId} userId={user}/></Paper>
           </Grid>
         </Grid>
       </div>

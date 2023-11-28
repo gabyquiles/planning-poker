@@ -9,7 +9,7 @@ const Stack = styled(MUStack)(({theme}) => ({
   justifyContent: 'space-around'
 }))
 
-export default function CardOptions() {
+export default function CardOptions({sessionId, userId}: {sessionId: string, userId: string}) {
   const values = ['0', '1', '2', '3', '5', '8', '13', '21', '34', '55', '?'];
   // const { user } = useUser();
 
@@ -18,7 +18,7 @@ export default function CardOptions() {
       {values.map(cardValue => (<StoryPointCard
         key={cardValue}
         value={cardValue}
-        onClick={() => castVote(cardValue, user.email)} />),
+        onClick={() => castVote(cardValue, userId)} />),
       )}
     </Stack>
   );
